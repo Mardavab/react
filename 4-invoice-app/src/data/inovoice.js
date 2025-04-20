@@ -34,5 +34,5 @@ export const invoice ={
             price: 300,
             quantity:1
         },
-    ]
+    ],
 }

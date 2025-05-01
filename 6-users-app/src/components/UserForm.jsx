@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../context/UserContext";
 
-export const UserForm = ({
-  handlerCloseForm,
-  userSelected,
-  handlerAddUser,
-  initialUserForm,
-}) => {
+export const UserForm = ({ handlerCloseForm, userSelected }) => {
+  const { handlerAddUser, initialUserForm } = useContext(UserContext);
   const [userForm, setUserForm] = useState(initialUserForm);
   const { id, username, password, email } = userForm;
+
   useEffect(() => {
     setUserForm({
       ...userSelected,
@@ -74,8 +72,8 @@ export const UserForm = ({
       </button>
       {!handlerCloseForm || (
         <button
-          onClick={() => onCloseForm()}
-          type="submit"
+          onClick={onCloseForm}
+          type="button"
           className="btn-primary btn mx-2"
         >
           Cerrar
